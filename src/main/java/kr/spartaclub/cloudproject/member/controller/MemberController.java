@@ -34,12 +34,11 @@ public class MemberController {
             @PathVariable Long id,
             @RequestParam("file") MultipartFile file) {
         memberService.uploadProfileImage(id, file);
-        return ResponseEntity.ok("Upload success");
+        return ResponseEntity.ok("프로필 업로드 성공");
     }
 
     @GetMapping("/api/members/{id}/profile-image")
     public ResponseEntity<GetProfileImageUrlResponse> getProfileImage(@PathVariable Long id) {
-        URL url = memberService.getProfileImagePresignedUrl(id);
-        return ResponseEntity.ok(new GetProfileImageUrlResponse(url.toString()));
+        return ResponseEntity.ok(memberService.getProfileImagePresignedUrl(id));
     }
 }

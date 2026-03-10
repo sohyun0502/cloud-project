@@ -4,6 +4,7 @@ import io.awspring.cloud.s3.ObjectMetadata;
 import io.awspring.cloud.s3.S3Template;
 import kr.spartaclub.cloudproject.member.dto.CreateMemberRequest;
 import kr.spartaclub.cloudproject.member.dto.GetMemberResponse;
+import kr.spartaclub.cloudproject.member.dto.GetProfileImageUrlResponse;
 import kr.spartaclub.cloudproject.member.entity.Member;
 import kr.spartaclub.cloudproject.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.net.URL;
 import java.time.Duration;
+import java.time.Instant;
 import java.util.UUID;
 
 @Service
@@ -76,12 +78,20 @@ public class MemberService {
     }
 
     @Transactional(readOnly = true)
-    public URL getProfileImagePresignedUrl(Long id) {
+    public GetProfileImageUrlResponse getProfileImagePresignedUrl(Long id) {
         Member member = memberRepository.findById(id).orElseThrow(
                 () -> new IllegalStateException("없는 멤버입니다.")
         );
 
         String key = member.getProfileImageUrl();
-        return s3Template.createSignedGetURL(bucket, key, PRESIGNED_URL_EXPIRATION);
+        URL presignedUrl = s3Template.createSignedGetURL(bucket, key, PRESIGNED_URL_EXPIRATION);
+
+        // 만료시간 계산
+        Instant expirationTime = Instant.now().plus(PRESIGNED_URL_EXPIRATION);
+
+        return new GetProfileImageUrlResponse(
+                presignedUrl.toString(),
+                expirationTime
+        );
     }
 }
