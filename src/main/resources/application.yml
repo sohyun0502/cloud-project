@@ -1,6 +1,15 @@
 spring:
   application:
     name: cloud-project
+  cloud:
+    aws:
+      region:
+        static: ap-northeast-2
+      s3:
+        bucket: cloud-project-sohyun-files
+  servlet:
+    multipart:
+      max-request-size: 10MB
 
 server:
   port: 8080
