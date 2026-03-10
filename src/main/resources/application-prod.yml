@@ -2,11 +2,12 @@ spring:
   config:
     activate:
       on-profile: prod
+    import: aws-parameterstore:/cloud-project-app/prod/
 
   datasource:
-    url: jdbc:mysql://localhost:3306/member
-    username: root
-    password: 12345678
+    url: ${URL}
+    username: ${USERNAME}
+    password: ${PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -16,4 +17,8 @@ spring:
     properties:
       hibernate:
         format_sql: false
+
+info:
+  app:
+    message: ${TEAM_NAME}
 

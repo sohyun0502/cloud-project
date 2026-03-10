@@ -2,15 +2,20 @@ spring:
   application:
     name: cloud-project
 
+server:
+  port: 8080
+
 management:
   endpoints:
     web:
       exposure:
-        include: health
+        include: health,info
   endpoint:
     health:
       show-details: never
-
+  info:
+    env:
+      enabled: true
 
 logging:
   level:
