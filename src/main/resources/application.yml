@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: cloud-project
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+logging:
+  level:
+    root: INFO
+
