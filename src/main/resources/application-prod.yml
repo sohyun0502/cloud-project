@@ -4,9 +4,9 @@ spring:
       on-profile: prod
 
   datasource:
-    url: jdbc:mysql://RDS-ENDPOINT:3306/memberdb
-    username: admin
-    password: password
+    url: jdbc:mysql://localhost:3306/member
+    username: root
+    password: 12345678
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
