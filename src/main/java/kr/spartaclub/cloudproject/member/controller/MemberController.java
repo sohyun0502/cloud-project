@@ -18,17 +18,33 @@ public class MemberController {
 
     private final MemberService memberService;
 
+    /**
+     * 멤버 생성
+     * @param request
+     * @return
+     */
     @PostMapping("/api/members")
     public ResponseEntity<Void> createMember(@RequestBody CreateMemberRequest request) {
         memberService.saveMember(request);
         return ResponseEntity.ok().build();
     }
 
+    /**
+     * 멤버 단건 조회
+     * @param id
+     * @return
+     */
     @GetMapping("/api/members/{id}")
     public ResponseEntity<GetMemberResponse> getMember(@PathVariable Long id) {
         return ResponseEntity.ok(memberService.getMember(id));
     }
 
+    /**
+     * 파일 업로드
+     * @param id
+     * @param file
+     * @return
+     */
     @PostMapping("/api/members/{id}/profile-image")
     public ResponseEntity<String> uploadProfileImage(
             @PathVariable Long id,
@@ -37,6 +53,11 @@ public class MemberController {
         return ResponseEntity.ok("프로필 업로드 성공");
     }
 
+    /**
+     * 파일 PresignedUrl 받기
+     * @param id
+     * @return
+     */
     @GetMapping("/api/members/{id}/profile-image")
     public ResponseEntity<GetProfileImageUrlResponse> getProfileImage(@PathVariable Long id) {
         return ResponseEntity.ok(memberService.getProfileImagePresignedUrl(id));

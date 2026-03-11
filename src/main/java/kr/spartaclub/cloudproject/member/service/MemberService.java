@@ -2,6 +2,7 @@ package kr.spartaclub.cloudproject.member.service;
 
 import io.awspring.cloud.s3.ObjectMetadata;
 import io.awspring.cloud.s3.S3Template;
+import kr.spartaclub.cloudproject.global.error.FileUploadFailException;
 import kr.spartaclub.cloudproject.member.dto.CreateMemberRequest;
 import kr.spartaclub.cloudproject.member.dto.GetMemberResponse;
 import kr.spartaclub.cloudproject.member.dto.GetProfileImageUrlResponse;
@@ -69,8 +70,7 @@ public class MemberService {
             s3Template.upload(bucket, key, file.getInputStream());
 
         } catch (IOException e) {
-            // 적절한 커스텀 예외로 바꾸고, GlobalExceptionHandler로 핸들링 필요
-            throw new RuntimeException("파일 업로드 실패", e);
+            throw new FileUploadFailException("파일 업로드 실패");
         }
 
         member.updateProfileImageUrl(key);
