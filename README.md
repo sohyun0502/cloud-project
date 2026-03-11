@@ -1,5 +1,7 @@
 # CH 4 클라우드_아키텍처 설계 & 배포
 
+---
+
 ### LV 0 - 요금 폭탄 방지 AWS Budget 설정
 
 - 설정 완료된 AWS Budgets 화면을 캡처하여 README.md에 첨부하세요.
@@ -7,6 +9,8 @@
 <p align="center">
   <img src="docs/images/LV0_Budget설정.png" width="100%">
 </p>
+
+---
 
 ### LV 1 - 네트워크 구축 및 핵심 기능 배포
 
@@ -19,8 +23,10 @@
 - 추가로 EC2에 배포한 이후 Health Check 한 결과도 첨부했습니다.
 
 <p align="center">
-  <img src="docs/images/LV1_EC2_healthcheck.png" width="100%">
+  <img src="docs/images/LV1_EC2_healthcheck.png" width="80%">
 </p>
+
+---
 
 ### LV 2 - DB 분리 및 보안 연결하기
 
@@ -29,7 +35,7 @@
     - *(예: `http://3.34.xx.xx:8080/actuator/info`)*
 
 <p align="center">
-  <img src="docs/images/LV2_teamname_출력.png" width="100%">
+  <img src="docs/images/LV2_teamname_출력.png" width="80%">
 </p>
 
 2. **RDS 보안 그룹 스크린샷**
@@ -40,12 +46,14 @@
   <img src="docs/images/LV2_보안그룹_확인.png" width="100%">
 </p>
 
+---
+
 ### LV 3 - 프로필 사진 기능 추가와 권한 관리
 
 - 발급받은 Presigned URL 1개와 해당 URL의 만료 시간을 README.md에 기재하세요.
 
 <p align="center">
-  <img src="docs/images/LV3_get_file_url.png" width="100%">
+  <img src="docs/images/LV3_get_file_url.png" width="80%">
 </p>
 
 ```json
@@ -55,31 +63,22 @@
 }
 ```
 
+---
+
 ### LV 4 - Docker & CI/CD 파이프라인 구축
 
 1. **Github Actions 성공 이미지**
    - Github Repository > Actions 탭에서 배포 워크플로우가 초록색 체크(Success)로 표시된 화면을 캡처 후 README.md에 올려 주세요
 
 <p align="center">
-  <img src="docs/images/LV4_Github_Actions.png" width="100%">
+  <img src="docs/images/LV4_Github_Actions_CICD.png" width="100%">
 </p>
 
 2. **EC2 터미널 이미지**
    - EC2에 접속하여 `sudo docker ps` 명령어를 입력했을 때, 실행 중인 컨테이너 목록이 나오는 화면을 캡처 후 README.md에 올려 주세요
 
 <p align="center">
-  <img src="docs/images/" width="100%">
+  <img src="docs/images/LV4_EC2_docker_ps.png" width="100%">
 </p>
 
-
-
-
-
-
-
-
-
-
-
-
-
+---
