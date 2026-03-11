@@ -16,6 +16,12 @@
   <img src="docs/images/LV1_EC2퍼블릭IP.png" width="100%">
 </p>
 
+- 추가로 EC2에 배포한 이후 Health Check 한 결과도 첨부했습니다.
+
+<p align="center">
+  <img src="docs/images/LV1_EC2_healthcheck.png" width="100%">
+</p>
+
 ### LV 2 - DB 분리 및 보안 연결하기
 
 1. **Actuator Info 엔드포인트 URL**
@@ -31,12 +37,16 @@
     - 소스(Source) 부분에 IP 주소(`0.0.0.0/0`)가 아닌, EC2의 보안 그룹 ID (`sg-xxxxx`)가 등록되어 있음을 보여주어야 합니다.
 
 <p align="center">
-  <img src="docs/images/" width="100%">
+  <img src="docs/images/LV2_보안그룹_확인.png" width="100%">
 </p>
 
 ### LV 3 - 프로필 사진 기능 추가와 권한 관리
 
 - 발급받은 Presigned URL 1개와 해당 URL의 만료 시간을 README.md에 기재하세요.
+
+<p align="center">
+  <img src="docs/images/LV3_get_file_url.png" width="100%">
+</p>
 
 ```json
 {
@@ -44,10 +54,6 @@
    "expirationTime": "2026-03-18T05:44:05.798151438Z"
 }
 ```
-
-<p align="center">
-  <img src="docs/images/" width="100%">
-</p>
 
 ### LV 4 - Docker & CI/CD 파이프라인 구축
 
