@@ -88,6 +88,9 @@ jobs:
             echo "Container stop"
             docker stop $CONTAINER || true
 
+            echo "Container remove"
+            docker rm $CONTAINER || true
+  
             echo "Image delete"
             docker rmi $IMAGE_NAME:$SHORT_SHA || true
 
