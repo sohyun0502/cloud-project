@@ -64,7 +64,7 @@ jobs:
           SHORT_SHA=$(echo ${{ github.sha }} | cut -c1-7)
           IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/cloud-project-app
 
-          docker build --no-cache -t $IMAGE_NAME:$SHORT_SHA .
+          docker build --platform linux/arm64 -t $IMAGE_NAME:$SHORT_SHA .
   
           docker push $IMAGE_NAME:$SHORT_SHA
           
